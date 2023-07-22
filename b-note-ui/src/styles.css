@@ -1,1 +1,50 @@
-/* You can add global styles to this file, and also import other style files */
+html {
+    background-color: black;
+    color: white;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#main img {
+    width: 360px;
+    height: 100px;
+}
+
+button {
+    border: solid white 1px !important;
+    font-size: large;
+    margin: 2em 2em 0 2em;
+}
+
+.mat-mdc-button:hover .mat-mdc-focus-indicator {
+    border: solid white 1px !important;
+    background-color: rgb(50, 50, 50);
+}
+
+footer {
+    position: fixed;
+    width: 100%;
+    height: 5%;
+    bottom: 0;
+    text-align: center;
+    padding: .25em 0;
+    background-color: black;
+}
+
+footer svg {
+    filter: invert(100%);
+    width: 36px;
+    height: 36px;
+}
