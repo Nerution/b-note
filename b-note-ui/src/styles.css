@@ -8,29 +8,42 @@ body {
     padding: 0;
 }
 
-#main {
+#menu {
     position: absolute;
     top: 50%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     text-align: center;
+    width: 100%;
 }
 
-#main img {
+#menu img {
     width: 360px;
-    height: 100px;
+    height: 80px;
+}
+
+#buttonsMenu {
+    font-size: large;
+    margin: 1em 0;
 }
 
 button {
     border: solid white 1px !important;
-    font-size: large;
-    margin: 2em 2em 0 2em;
+    margin: 0 2em ;
 }
 
 .mat-mdc-button:hover .mat-mdc-focus-indicator {
     border: solid white 1px !important;
     background-color: rgb(50, 50, 50);
+}
+
+.contentFields {
+    opacity: 0;
+}
+
+input {
+    color:white;
 }
 
 footer {
