@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class NoteComponent {
 
-  title: string;
-  description: string;
+  title: string = "xyzTitle";
+  description: string = "xyz";
 
 }
