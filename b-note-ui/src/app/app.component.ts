@@ -10,19 +10,15 @@ import { FormControl, Validators } from '@angular/forms';
     trigger('displaySearchApp', [
       state('true', style({
         position: 'absolute',
-        top: '10%',
-        left: '50%',
-        transform: 'translate(auto, -50%)',
+        top: '15%',
       })),
       state('false', style({
         position: 'absolute',
         top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
       })),
       transition('* <=> *', [
-        query('.contentFields', animateChild()),
         animate('1s'),
+        query('.contentFields', animateChild()),
       ]),
     ]),
     trigger('toggleSearchBar', [

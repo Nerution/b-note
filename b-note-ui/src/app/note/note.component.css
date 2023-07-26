@@ -1,0 +1,10 @@
+#notes {
+    position: absolute;
+    
+    /* transform: translateY(-12.5%); */
+    padding-bottom: 5%;
+}
+
+#notes table {
+    display: inline-block;
+}

@@ -1,21 +1,24 @@
-<div id="menu" [@displaySearchApp]="displaySearchApp">
-  <div id="logo">
-    <img src="../assets/images/logo.png" alt="logo">
-  </div>
-  
-  <div id="buttonsMenu">
-    <form>
-      <mat-form-field id="matInputFormField" class="contentFields" *ngIf="displaySearchApp" [@toggleSearchBar]="displaySearchApp">
-        <input type="text" matInput placeholder="I am looking for..."[formControl]="searchTerm">
-      </mat-form-field>
-      <button mat-button [formControl]="searchTerm" (click)="showSearchApp()">SEARCH</button>
+<div id="menu" >
+  <div [@displaySearchApp]="displaySearchApp">
 
-      <button mat-button [formControl]="searchTerm">ADD</button>
-    </form>
-
-    <div id="content" class="contentFields" [@toggleSearchBar]="displaySearchApp">
-      aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    <div id="logo">
+      <img src="../assets/images/logo.png" alt="logo">
     </div>
+    
+    <div id="buttonsMenu">
+      <form>
+        <mat-form-field id="matInputFormField" class="contentFields" *ngIf="displaySearchApp" [@toggleSearchBar]="displaySearchApp">
+          <input type="text" matInput placeholder="I am looking for..."[formControl]="searchTerm">
+        </mat-form-field>
+        <button mat-button [formControl]="searchTerm" (click)="showSearchApp()">SEARCH</button>
+  
+        <button mat-button [formControl]="searchTerm">ADD</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="content" class="contentFields" *ngIf="displaySearchApp" [@toggleSearchBar]="displaySearchApp">
+    <app-note></app-note>
   </div>
 </div>
 
