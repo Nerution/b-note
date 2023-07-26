@@ -1,2 +1,42 @@
-package app.bnote.bnote.controller;public class NoteController {
+package app.bnote.bnote.controller;
+
+import app.bnote.bnote.model.dao.NoteDTO;
+import app.bnote.bnote.service.NoteService;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+@RestController
+public class NoteController {
+
+    private final NoteService noteService;
+
+    public NoteController(NoteService noteService) {
+        this.noteService = noteService;
+    }
+
+    @PostMapping(value = "/create")
+    public NoteDTO createNewNote(@RequestBody NoteDTO newNote) {
+        return noteService.addNote(newNote.toNote());
+    }
+
+    @GetMapping(value = "/search")
+    public List<NoteDTO> getAll() {
+        return noteService.getAllNotes();
+    }
+
+    @GetMapping(value = "/{text}")
+    public List<NoteDTO> getNotesByText(@PathVariable String text) {
+        return noteService.getByText(text);
+    }
+
+    @DeleteMapping(value = "/delete/{id}")
+    public String deleteById(@PathVariable Integer id) {
+        return noteService.removeNoteById(id);
+    }
 }

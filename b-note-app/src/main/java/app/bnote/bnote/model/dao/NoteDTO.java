@@ -1,6 +1,10 @@
 package app.bnote.bnote.model.dao;
 
-public class NoteDAO {
+import app.bnote.bnote.model.Note;
+
+import java.time.LocalDate;
+
+public class NoteDTO {
 
     private String id;
     private String title;
@@ -11,35 +15,50 @@ public class NoteDAO {
         return id;
     }
 
-    public NoteDAO setId(String id) {
+    public void setId(String id) {
         this.id = id;
-        return this;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public NoteDAO setTitle(String title) {
+    public void setTitle(String title) {
         this.title = title;
-        return this;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public NoteDAO setDescription(String description) {
+    public void setDescription(String description) {
         this.description = description;
-        return this;
     }
 
     public String getCreationDate() {
         return creationDate;
     }
 
-    public NoteDAO setCreationDate(String creationDate) {
+    public void setCreationDate(String creationDate) {
         this.creationDate = creationDate;
+    }
+
+    public NoteDTO withTitle(String title) {
+        this.title = title;
         return this;
+    }
+
+    public NoteDTO withDescription(String description) {
+        this.description = description;
+        return this;
+    }
+
+    public NoteDTO withCreationDate(LocalDate creationDate) {
+        this.creationDate = creationDate.toString();
+        return this;
+    }
+
+    public Note toNote(){
+        return new Note(title, description);
     }
 }
