@@ -6,9 +6,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
 
@@ -17,7 +19,7 @@ import java.time.LocalDate;
 @NamedQueries({
         @NamedQuery(name = "Note.getAll", query = "SELECT n FROM Note n"),
         @NamedQuery(name = "Note.getById", query = "SELECT n FROM Note n WHERE n.id = :id"),
-        @NamedQuery(name = "Note.getByTextInTitleOrDescription", query = "SELECT n FROM Note n WHERE n.title like '%:text%' OR n.description like '%:text%'"),
+        @NamedQuery(name = "Note.getByTextInTitleOrDescription", query = "SELECT n FROM Note n WHERE n.title like :text OR n.description like :text"),
 })
 public class Note {
 
@@ -28,9 +30,11 @@ public class Note {
     @Column(nullable = false)
     private String title;
 
+    @Lob
     private String description;
 
-    @Column(nullable = false, updatable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @CreationTimestamp
+    @Column(updatable = false)
     private LocalDate creationDate;
 
     public Note() {
@@ -57,20 +61,9 @@ public class Note {
         return creationDate;
     }
 
-    public Note withTitle(String title) {
-        this.title = title;
-        return this;
-    }
-
-    public Note withDescription(String description) {
-        this.description = description;
-        return this;
-    }
-
     public NoteDTO toDTO() {
         return new NoteDTO()
                 .withTitle(title)
-                .withDescription(description)
-                .withCreationDate(creationDate);
+                .withDescription(description);
     }
 }

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { NoteModel } from '../interfaces/note.model.interface';
+import { Note, NoteModel } from '../interfaces/note.model.interface';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -12,7 +12,7 @@ export class NoteService {
 
   constructor(public http: HttpClient) { }
 
-  submitNote(newNote: NoteModel): Observable<NoteModel>{
+  submitNote(newNote: Note): Observable<NoteModel>{
     return this.http.post<any>(this.BASE_MODEL_API + "/create", newNote);
   }
 
@@ -20,7 +20,7 @@ export class NoteService {
     return this.http.get<any>(this.BASE_MODEL_API + "/search");
   }
 
-  getNoteByText(text: string): Observable<NoteModel>{
+  getNoteByText(text: string): Observable<Array<NoteModel>>{
     return this.http.get<any>(this.BASE_MODEL_API + "/search" + "/" + text);
   }
 

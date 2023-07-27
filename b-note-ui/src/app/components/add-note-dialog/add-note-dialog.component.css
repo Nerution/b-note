@@ -33,3 +33,14 @@ textarea {
     border: solid white 1px !important;
     margin: 0 1em ;
 }
+
+button:disabled{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+mat-error {
+    color: red;
+    font-size: small;
+}

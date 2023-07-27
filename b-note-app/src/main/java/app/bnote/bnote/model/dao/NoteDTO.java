@@ -2,8 +2,6 @@ package app.bnote.bnote.model.dao;
 
 import app.bnote.bnote.model.Note;
 
-import java.time.LocalDate;
-
 public class NoteDTO {
 
     private String id;
@@ -53,12 +51,7 @@ public class NoteDTO {
         return this;
     }
 
-    public NoteDTO withCreationDate(LocalDate creationDate) {
-        this.creationDate = creationDate.toString();
-        return this;
-    }
-
-    public Note toNote(){
+    public Note toNote() {
         return new Note(title, description);
     }
 }

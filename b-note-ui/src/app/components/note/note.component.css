@@ -8,9 +8,11 @@
 
 .note {
     border: solid white 1px;
-    width: 20%;
+    min-width: 10%;
+    max-width: 20%;
     display: inline-block;
-    margin: 0 1em;
+    vertical-align: top;
+    margin: 0 1em 2em 1em;
 }
 
 .note-title {
@@ -24,10 +26,12 @@
 .title {
     font-weight: bolder;
     margin: 0 1em;
+    word-wrap: anywhere;
 }
 
 .note-desc {
     margin: 1em;
+    word-wrap: break-word;
 }
 
 button {

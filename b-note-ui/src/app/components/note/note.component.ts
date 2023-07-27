@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { NoteModel } from 'src/app/interfaces/note.model.interface';
 import { NoteService } from 'src/app/services/note.service';
@@ -8,8 +8,11 @@ import { NoteService } from 'src/app/services/note.service';
   templateUrl: './note.component.html',
   styleUrls: ['./note.component.css']
 })
-export class NoteComponent implements OnInit, OnDestroy{
+export class NoteComponent implements OnInit, OnChanges, OnDestroy{
 
+
+  @Input() newNote: any;
+  @Input() searchText: string = '';
   private subscriptions = new Subscription();
   fetchedNotes: Array<NoteModel> = [];
 
@@ -23,6 +26,32 @@ export class NoteComponent implements OnInit, OnDestroy{
       );
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (this.newNote.title){
+      this.createNewNote();
+      this.newNote.title = null;
+    }
+    if (this.searchText){
+      this.searchByText(this.searchText);
+    } else if (this.searchText === ''){
+      this.getAllNotes();
+    }
+  }
+
+  private createNewNote(){
+    this.noteService.submitNote(this.newNote).subscribe(() => {
+      this.getAllNotes();
+    })
+  }
+
+  private searchByText(text: string){
+    this.noteService.getNoteByText(text).subscribe(
+      notes => {
+        this.fetchedNotes = notes;
+      }
+    )
+  }
+
   private getAllNotes() {
     this.noteService.getAllNotes().subscribe(
       notes => {
@@ -33,7 +62,6 @@ export class NoteComponent implements OnInit, OnDestroy{
 
   removeNote(note: NoteModel) {
     this.noteService.removeNote(note.id).subscribe(() => {
-      delete this.fetchedNotes[this.fetchedNotes.findIndex(n => n.id === note.id)];
       this.getAllNotes();
     });
   }

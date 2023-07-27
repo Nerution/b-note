@@ -1,20 +1,31 @@
 <div id="dialog">
     <h1 mat-dialog-title>Add note</h1>
-    <div mat-dialog-content>
-        <mat-form-field>
-            <input matInput placeholder="Title">
-        </mat-form-field>
-        <mat-form-field>
-            <textarea matInput
-                placeholder="Description"
-                cdkTextareaAutosize
-                #autosize="cdkTextareaAutosize"
-                cdkAutosizeMinRows="1"
-                cdkAutosizeMaxRows="5"></textarea>
-            </mat-form-field>
-    </div>
-    <div mat-dialog-actions>
-      <button mat-button mat-dialog-close>Cancel</button>
-      <button mat-button mat-dialog-close cdkFocusInitial>Add</button>
-    </div>
+    <form [formGroup]="noteForm" (ngSubmit)="noteForm.valid && addNewNote()">
+        <div mat-dialog-content>
+                <mat-form-field>
+                    <input matInput 
+                    id="title"
+                    placeholder="Title *" 
+                    formControlName="title"
+                    (change)="changeTitle($event)"
+                    required>
+                    <mat-error *ngIf="noteForm.invalid">{{titleError}}</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <textarea matInput
+                        formControlName="description"
+                        placeholder="Description"
+                        cdkTextareaAutosize
+                        #autosize="cdkTextareaAutosize"
+                        cdkAutosizeMinRows="1"
+                        cdkAutosizeMaxRows="5"
+                        (change)="changeDescription($event)"></textarea>
+                </mat-form-field>
+        </div>
+        <div mat-dialog-actions>
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button mat-button [mat-dialog-close]="note" [disabled]="noteForm.invalid" cdkFocusInitial type="submit">Add</button>
+        </div>
+    </form>
+
 </div>

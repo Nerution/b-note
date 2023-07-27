@@ -9,15 +9,15 @@
       <form>
         <button id="slim-button" ngDefaultControl (click)="showSearchApp()"><mat-icon>menu</mat-icon></button>
         <mat-form-field id="matInputFormField" class="contentFields" *ngIf="displaySearchApp" [@toggleSearchBar]="displaySearchApp">
-          <input type="text" matInput placeholder="I am looking for...">
+          <input type="text" matInput placeholder="I am looking for..." [formControl]="searchTerm" (change)="searchText($event)">
         </mat-form-field>
-        <button class="full-button" mat-button ngDefaultControl [formControl]="searchTerm">SEARCH</button>
+        <button class="full-button" mat-button ngDefaultControl *ngIf="displaySearchApp">SEARCH</button>
         <button class="full-button" mat-button ngDefaultControl (click)="openAddNoteDialog()">ADD</button>
       </form>
     </div>
   </div>
 
-  <app-note class="contentFields" [@toggleSearchBar]="displaySearchApp"></app-note>
+  <app-note class="contentFields" [newNote]="newNote" [searchText]="searchTextString" [@toggleSearchBar]="displaySearchApp"></app-note>
 </div>
 
 <footer>

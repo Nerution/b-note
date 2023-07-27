@@ -4,3 +4,8 @@ export interface NoteModel {
     description?: string,
     creationDate: string
 }
+
+export interface Note {
+    title: string,
+    description?: string
+}

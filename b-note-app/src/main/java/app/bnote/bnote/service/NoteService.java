@@ -7,12 +7,12 @@ import java.util.List;
 
 public interface NoteService {
 
-    public NoteDTO addNote(Note note);
+    NoteDTO addNote(Note note);
 
-    public List<NoteDTO> getAllNotes();
+    List<NoteDTO> getAllNotes();
 
-    public List<NoteDTO> getByText(String text);
+    List<NoteDTO> getByText(String text);
 
-    public String removeNoteById(Integer id);
+    String removeNoteById(Integer id);
 
 }

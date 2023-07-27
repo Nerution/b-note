@@ -29,14 +29,16 @@ public class NoteServiceImpl implements NoteService {
 
     @Override
     public List<NoteDTO> getByText(String text) {
-        return em.createNamedQuery("Note.getByTextInTitleOrDescription", NoteDTO.class).setParameter("text", text)
+        return em.createNamedQuery("Note.getByTextInTitleOrDescription", NoteDTO.class)
+                .setParameter("text", "%" + text + "%")
                 .getResultList();
     }
 
     @Override
     @Transactional
     public String removeNoteById(Integer id) {
-        Note noteToRemove = em.createNamedQuery("Note.getById", Note.class).setParameter("id", id)
+        Note noteToRemove = em.createNamedQuery("Note.getById", Note.class)
+                .setParameter("id", id)
                 .getSingleResult();
         em.remove(noteToRemove);
         return noteToRemove.getId().toString();
