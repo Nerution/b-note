@@ -1,3 +1,5 @@
+Simple web application for personal notes.
+
 Fullstack - Angular + Java with Spring Boot + build-in h2 database
 
 Versions:
