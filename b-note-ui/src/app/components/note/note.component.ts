@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { NoteModel } from '../interfaces/note.model.interface';
-import { NoteService } from '../services/note.service';
+import { NoteModel } from 'src/app/interfaces/note.model.interface';
+import { NoteService } from 'src/app/services/note.service';
 
 @Component({
   selector: 'app-note',
@@ -29,6 +29,13 @@ export class NoteComponent implements OnInit, OnDestroy{
         this.fetchedNotes = notes;
       }
     )
+  }
+
+  removeNote(note: NoteModel) {
+    this.noteService.removeNote(note.id).subscribe(() => {
+      delete this.fetchedNotes[this.fetchedNotes.findIndex(n => n.id === note.id)];
+      this.getAllNotes();
+    });
   }
 
   ngOnDestroy(): void {

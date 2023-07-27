@@ -2,7 +2,7 @@
     <div class="note" *ngFor="let note of fetchedNotes">
         <div class="note-title">
             <div class="title">{{note.title}}</div>
-            <button>
+            <button (click)="removeNote(note)">
                 <mat-icon>remove</mat-icon>
             </button>
         </div>

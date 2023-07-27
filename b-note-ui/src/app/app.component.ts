@@ -2,7 +2,7 @@ import { animate, animateChild, query, state, style, transition, trigger } from 
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { AddNoteDialogComponent } from './add-note-dialog/add-note-dialog.component';
+import { AddNoteDialogComponent } from './components/add-note-dialog/add-note-dialog.component';
 
 
 @Component({
@@ -52,15 +52,22 @@ export class AppComponent {
   }
 
   openAddNoteDialog() {
+    const element = document.getElementsByClassName("cdk-overlay-container")[0];
+    if (element){
+      element.setAttribute('style', 'visibility: visible');
+    }
+
     const dialogRef = this.dialog.open(AddNoteDialogComponent, {
       width: '350px',
       height: '350px',
       enterAnimationDuration: '1000ms',
       exitAnimationDuration: '500ms',
-      backdropClass: 'cdk-overlay-transparent-backdrop',
-      hasBackdrop: true,
-    })
-
+    });
+    
+    dialogRef.afterClosed().subscribe(result => {
+      const element = document.getElementsByClassName("cdk-overlay-container")[0];
+      element.setAttribute('style', 'visibility: hidden');
+    });
     
   }
 }

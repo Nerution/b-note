@@ -2,9 +2,8 @@
     position: absolute;
     top: 25%;
     margin: 0 1em;
-    /* transform: translateY(-12.5%); */
-    padding-bottom: 5%;
     width: 100%;
+    padding-bottom: 5%;
 }
 
 .note {
@@ -38,6 +37,6 @@ button {
 .note-creation-date {
     border: solid white 1px;
     color: rgba(255, 255, 255, 0.5);
-    text-align: end;
+    text-align: center;
     padding: .25em 1em;
 }

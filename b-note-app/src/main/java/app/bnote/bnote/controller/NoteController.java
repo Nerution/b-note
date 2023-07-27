@@ -33,12 +33,12 @@ public class NoteController {
     }
 
     @GetMapping(value = "/search/{text}")
-    public List<NoteDTO> getNotesByText(@PathVariable String text) {
+    public List<NoteDTO> getNotesByText(@PathVariable("text") String text) {
         return noteService.getByText(text);
     }
 
     @DeleteMapping(value = "/delete/{id}")
-    public String deleteById(@PathVariable Integer id) {
+    public String deleteById(@PathVariable("id") Integer id) {
         return noteService.removeNoteById(id);
     }
 }

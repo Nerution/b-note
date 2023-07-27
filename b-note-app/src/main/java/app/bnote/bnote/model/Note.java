@@ -18,7 +18,6 @@ import java.time.LocalDate;
         @NamedQuery(name = "Note.getAll", query = "SELECT n FROM Note n"),
         @NamedQuery(name = "Note.getById", query = "SELECT n FROM Note n WHERE n.id = :id"),
         @NamedQuery(name = "Note.getByTextInTitleOrDescription", query = "SELECT n FROM Note n WHERE n.title like '%:text%' OR n.description like '%:text%'"),
-        @NamedQuery(name = "Note.deleteById", query = "DELETE FROM Note n WHERE n.id = :id"),
 })
 public class Note {
 

@@ -7,12 +7,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NoteComponent } from './note/note.component';
-import { HttpClientModule } from '@angular/common/http';
-import { AddNoteDialogComponent } from './add-note-dialog/add-note-dialog.component';
+import { NoteComponent } from './components/note/note.component';
+import { AddNoteDialogComponent } from './components/add-note-dialog/add-note-dialog.component';
 
 
 @NgModule({
