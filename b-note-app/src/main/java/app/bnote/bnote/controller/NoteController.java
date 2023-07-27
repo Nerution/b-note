@@ -2,6 +2,7 @@ package app.bnote.bnote.controller;
 
 import app.bnote.bnote.model.dao.NoteDTO;
 import app.bnote.bnote.service.NoteService;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@CrossOrigin(maxAge = 3600)
 @RestController
 public class NoteController {
 
@@ -30,7 +32,7 @@ public class NoteController {
         return noteService.getAllNotes();
     }
 
-    @GetMapping(value = "/{text}")
+    @GetMapping(value = "/search/{text}")
     public List<NoteDTO> getNotesByText(@PathVariable String text) {
         return noteService.getByText(text);
     }

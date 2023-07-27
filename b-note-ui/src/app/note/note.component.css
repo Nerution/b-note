@@ -1,10 +1,43 @@
 #notes {
     position: absolute;
-    
+    top: 25%;
+    margin: 0 1em;
     /* transform: translateY(-12.5%); */
     padding-bottom: 5%;
+    width: 100%;
 }
 
-#notes table {
+.note {
+    border: solid white 1px;
+    width: 20%;
     display: inline-block;
+    margin: 0 1em;
+}
+
+.note-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    word-wrap: normal;
+    border: solid white 1px;
+}
+
+.title {
+    font-weight: bolder;
+    margin: 0 1em;
+}
+
+.note-desc {
+    margin: 1em;
+}
+
+button {
+    border: solid white 1px;
+}
+
+.note-creation-date {
+    border: solid white 1px;
+    color: rgba(255, 255, 255, 0.5);
+    text-align: end;
+    padding: .25em 1em;
 }

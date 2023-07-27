@@ -1,0 +1,35 @@
+#dialog {
+    background-color: black;
+    color: white;
+    border: solid white 1px;
+    width: 99%;
+    height: 99%;
+    text-align: center;
+}
+
+.mat-mdc-dialog-title {
+    color: white;
+    font-weight: 900;
+}
+
+.mat-mdc-dialog-content {
+    color: white;
+}
+
+mat-form-field {
+    padding: .5em 0;
+}
+
+textarea {
+    color: white;
+}
+
+.mat-mdc-dialog-actions {
+    color: white;
+    justify-content: space-evenly;
+}
+
+.mat-mdc-button {
+    border: solid white 1px !important;
+    margin: 0 1em ;
+}
